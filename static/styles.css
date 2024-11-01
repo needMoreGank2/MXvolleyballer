@@ -1,0 +1,77 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f9; /* Light background for contrast */
+    color: #343a40; /* Dark color for text readability */
+    }
+      /* Customizing list style for better appearance on mobile */
+    ul {
+        padding: 0;
+        list-style: none; /* Remove bullets */
+        margin: 0;
+     }
+    ul li {
+    padding: 5px 0;
+    margin: 0;
+    }
+
+      /* Styling links */
+      ul li a {
+        display: block;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #007bff;
+        transition: background-color 0.3s ease;
+      }
+
+      /* Hover effect for links */
+      ul li a:hover {
+        background-color: #007bff;
+        color: #fff;
+      }
+
+      /* Adjust the padding for mobile screens */
+      @media (max-width: 576px) {
+        ul li a {
+          padding: 10px;
+          font-size: 18px;
+        }
+
+
+
+      }
+
+
+.btn-secondary-custom {
+        background-color: #fff; /* Set background to white */
+        color: #343a40;
+        border: 1px solid #6c757d;
+        transition: background-color 0.3s ease;
+      }
+
+
+    .btn-secondary-custom:hover {
+        background-color: #5a6268;
+        color: #fff;
+      }
+
+
+
+.title-text {
+    font-size: 2rem; /* Adjust this value for larger or smaller text */
+    font-weight: bold;
+}
+
+@media (max-width: 576px) {
+    .table-mobile-scroll {
+        overflow-x: auto;
+    }
+
+    /* Optional: Adjust button sizes for mobile */
+    button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}

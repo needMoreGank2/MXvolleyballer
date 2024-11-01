@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1024, initial-scale=1">
+    <link href="./css/styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+
+
+    <title>Game~</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+    .fraction {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1.2em;
+    }
+    .fraction .numerator {
+      font-size: 0.9em;
+      border-bottom: 1px solid;
+      padding-bottom: 0.1em;
+      margin-bottom: 0.1em;
+    }
+    .fraction .denominator {
+      font-size: 0.9em;
+      padding-top: 0.1em;
+    }
+  </style>
+</head>
+<body>
+
+    <Text class = "title-text">vs</Text>
+    <Text id = "opponentName" class = "title-text">placeholder</Text>
+    <div class="table-responsive table-mobile-scroll">
+    <table class="table table-striped" id="spreadsheet">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th> <input placeholder="name" id="nameSearch" type = "text"> </th>
+            <th><button id="serveCount"> Total Serves </button></th>
+            <th><button id="serve%" data-bs-toggle="modal" data-bs-target="#serveRatingModal"> Serve Rating </button></th>
+            <th><button id="passCount"> Total Passes </button></th>
+            <th><button id="pass%" data-bs-toggle="modal" data-bs-target="#passAverageModal"> Pass Average </button></th>
+            <th><button id="attackCount"> Total Attacks </button></th>
+            <th><button id="attack%" data-bs-toggle="modal" data-bs-target="#attackRatingModal"> Attack Rating </button></th>
+        </tr>
+        </thead>
+        <tbody id = "table-body">
+            {% for i in range(16) %}
+            <tr>
+                {% for j in range(8) %}
+                    <td>placeholder</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+    <div class="modal fade" id="serveRatingModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="serveRatingModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="serveRatingModalLabel">About Serve Rating?</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div>
+            <p>The Serve Rating follows a simple formula!:</p>
+            <span class="fraction">
+            <span class="numerator">(Aces - Errors)</span>
+            <span class="denominator">Total Serves</span>
+          </span>
+          </div>
+          <br>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="passAverageModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="passAverageModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="passAverageModalLabel">About Pass (Rating) Average?</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div>
+            <p>The Pass Rating follows a simple formula!:</p>
+            <p>0: Shank or overpass</p>
+            <p>1: Playable ball, but not settable</p>
+            <p>2: A settable ball, but the setter's options are not 100% open</p>
+            <p>3: Perfect pass! ☆</p>
+            </div>
+          </span>
+          <br>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="attackRatingModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="attackRatingModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="attackRatingModalLabel">About Attack Rating?</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div>
+            <p>The Attack Rating follows a simple formula!:</p>
+            <span class="fraction">
+            <span class="numerator">(Kills - Errors)</span>
+            <span class="denominator">Total Attacks</span>
+          </span>
+          </div>
+          <br>
+
+        </div>
+      </div>
+    </div>
+    <!--
+
+    <button id = "reset"> Reset </button>
+    <button id= "edit"> Edit </button>
+    -->
+
+    <div class="container my-4">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="info-blurb p-3 text-center">
+            <h4 class="mb-2">Total Missed Serves :( </h4>
+            <p id="totalMissedServes">Placeholder Missed Serves</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="info-blurb p-3 text-center">
+            <h4 class="mb-2">InfoBlurb</h4>
+            <p>TBA!</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="info-blurb p-3 text-center">
+            <h4 class="mb-2">InfoBlurb</h4>
+            <p>TBA!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+        const infoTable = {{ data | tojson}};
+        const infoArray = {{ metadata | tojson}};
+    </script>
+
+    <script src="/static/game.js"> </script>
+</body>
+</html>
